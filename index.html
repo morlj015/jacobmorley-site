@@ -8,6 +8,12 @@
       name="description"
       content="Jacob Morley — Graduate Software Engineer candidate, Director of Castle View Tutoring, and Digital Analyst based in Bristol."
     />
+    <meta property="og:title" content="Jacob Morley | Graduate Software Engineer" />
+    <meta
+      property="og:description"
+      content="Graduate Software Engineer candidate with experience in analytics, product operations, and client-focused delivery."
+    />
+    <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,9 +51,16 @@
             Building practical, user-focused solutions through software, analytics, and clear
             communication.
           </p>
+
+          <div class="availability">
+            <span class="dot"></span>
+            Open to Graduate Software Engineer opportunities (UK / Remote)
+          </div>
+
           <div class="cta-row">
             <a class="button primary" href="#projects">View Projects</a>
             <a class="button" href="#contact">Get in Touch</a>
+            <a class="button" href="assets/Jacob_Morley_CV.pdf" download>Download CV</a>
           </div>
         </div>
       </section>
@@ -115,7 +128,7 @@
 
       <section class="panel" id="projects">
         <div class="content narrow reveal">
-          <h2>Projects</h2>
+          <h2>Featured Projects</h2>
           <ul class="cards">
             <li>
               <h3>Spotify Playlist Generator</h3>
@@ -124,21 +137,34 @@
                 Built an app that integrates third-party APIs to generate personalised playlists based
                 on user preferences.
               </p>
+              <div class="project-links">
+                <a href="#" aria-disabled="true">Live Demo (add link)</a>
+                <a href="#" aria-disabled="true">GitHub Repo (add link)</a>
+              </div>
             </li>
             <li>
               <h3>Engineering Analytics Scripts</h3>
               <p><strong>Python</strong></p>
               <p>Created scripts for calculations, graphing, and data analysis workflows.</p>
+              <div class="project-links">
+                <a href="#" aria-disabled="true">GitHub Repo (add link)</a>
+              </div>
             </li>
             <li>
               <h3>Hotel Booking System</h3>
               <p><strong>C</strong></p>
               <p>Developed a text-based booking system with input validation and booking logic.</p>
+              <div class="project-links">
+                <a href="#" aria-disabled="true">GitHub Repo (add link)</a>
+              </div>
             </li>
             <li>
               <h3>Object-Oriented Game</h3>
               <p><strong>Java</strong></p>
               <p>Built a simple game using OOP principles and modular code design.</p>
+              <div class="project-links">
+                <a href="#" aria-disabled="true">GitHub Repo (add link)</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -202,7 +228,27 @@
                 >LinkedIn Profile</a
               >
             </li>
+            <li><a href="assets/Jacob_Morley_CV.pdf" download>Download CV (PDF)</a></li>
           </ul>
+
+          <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <h3>Send me a message</h3>
+            <p class="form-note">Form is ready — replace <code>your-form-id</code> with your Formspree ID.</p>
+            <label>
+              Name
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button class="button primary" type="submit">Send Message</button>
+          </form>
+
           <p class="small">© <span id="year"></span> Jacob Morley</p>
         </div>
       </section>
