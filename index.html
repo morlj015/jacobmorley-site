@@ -22,19 +22,22 @@
 
     <header class="top-nav">
       <a class="brand" href="#home">Jacob Morley</a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="nav-right">
+        <nav>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark and light mode">☀️ Light</button>
+      </div>
     </header>
 
     <main class="snap-container">
       <section class="panel hero" id="home">
-        <div class="content hero-card">
+        <div class="content hero-card reveal">
           <p class="eyebrow">Personal Website</p>
           <h1>Jacob Morley</h1>
           <p class="subtitle">Graduate Software Engineer Candidate · Director, Castle View Tutoring</p>
@@ -50,7 +53,7 @@
       </section>
 
       <section class="panel" id="about">
-        <div class="content narrow">
+        <div class="content narrow reveal">
           <h2>About</h2>
           <p>
             I’m a Bristol-based graduate software engineer candidate with experience across product-like
@@ -66,7 +69,7 @@
       </section>
 
       <section class="panel" id="experience">
-        <div class="content narrow">
+        <div class="content narrow reveal">
           <h2>Experience</h2>
 
           <article class="entry">
@@ -111,7 +114,7 @@
       </section>
 
       <section class="panel" id="projects">
-        <div class="content narrow">
+        <div class="content narrow reveal">
           <h2>Projects</h2>
           <ul class="cards">
             <li>
@@ -142,7 +145,7 @@
       </section>
 
       <section class="panel" id="skills">
-        <div class="content narrow">
+        <div class="content narrow reveal">
           <h2>Skills</h2>
           <div class="grid">
             <div>
@@ -166,7 +169,7 @@
       </section>
 
       <section class="panel" id="education">
-        <div class="content narrow">
+        <div class="content narrow reveal">
           <h2>Education</h2>
           <article class="entry">
             <div class="entry-head">
@@ -189,7 +192,7 @@
       </section>
 
       <section class="panel" id="contact">
-        <div class="content narrow">
+        <div class="content narrow reveal">
           <h2>Contact</h2>
           <ul class="links">
             <li><a href="mailto:morleyjacob6@gmail.com">morleyjacob6@gmail.com</a></li>
@@ -207,6 +210,40 @@
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const savedTheme = localStorage.getItem('theme');
+      const initialTheme = savedTheme || 'dark';
+      root.setAttribute('data-theme', initialTheme);
+
+      const setToggleLabel = () => {
+        const isDark = root.getAttribute('data-theme') !== 'light';
+        toggle.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+      };
+
+      setToggleLabel();
+
+      toggle.addEventListener('click', () => {
+        const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+        setToggleLabel();
+      });
+
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      reveals.forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
