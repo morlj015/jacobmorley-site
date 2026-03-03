@@ -8,9 +8,18 @@
       name="description"
       content="Jacob Morley — Graduate Software Engineer candidate, Director of Castle View Tutoring, and Digital Analyst based in Bristol."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
     <header class="top-nav">
       <a class="brand" href="#home">Jacob Morley</a>
       <nav>
@@ -25,15 +34,18 @@
 
     <main class="snap-container">
       <section class="panel hero" id="home">
-        <div class="content">
+        <div class="content hero-card">
           <p class="eyebrow">Personal Website</p>
           <h1>Jacob Morley</h1>
           <p class="subtitle">Graduate Software Engineer Candidate · Director, Castle View Tutoring</p>
           <p class="lead">
-            I build practical, user-focused solutions using software, analytics, and strong client
+            Building practical, user-focused solutions through software, analytics, and clear
             communication.
           </p>
-          <a class="button" href="#about">Scroll to explore ↓</a>
+          <div class="cta-row">
+            <a class="button primary" href="#projects">View Projects</a>
+            <a class="button" href="#contact">Get in Touch</a>
+          </div>
         </div>
       </section>
 
@@ -41,14 +53,14 @@
         <div class="content narrow">
           <h2>About</h2>
           <p>
-            I’m a Bristol-based graduate software engineer candidate with experience in product-like
-            operations, data analysis, and customer-facing delivery. I founded and run Castle View
-            Tutoring, where I built systems for onboarding, matching, scheduling, and payments.
+            I’m a Bristol-based graduate software engineer candidate with experience across product-like
+            operations, data analysis, and client delivery. I founded and run Castle View Tutoring,
+            where I built systems for onboarding, matching, scheduling, and payments.
           </p>
           <p>
-            Alongside that, I work as a Digital Analyst, turning performance data into clear business
-            recommendations. I’m now looking to bring this blend of technical and commercial thinking
-            into a software engineering role in a fast-moving team.
+            Alongside this, I work as a Digital Analyst, turning performance data into clear business
+            recommendations. I’m looking to bring this blend of technical and commercial thinking into
+            a software engineering role in a high-growth team.
           </p>
         </div>
       </section>
@@ -91,7 +103,7 @@
             </div>
             <ul>
               <li>Supported research into innovation in the transport sector.</li>
-              <li>Produced structured written reports and presented findings in professional settings.</li>
+              <li>Produced structured reports and presented findings in professional settings.</li>
               <li>Worked with stakeholders across large-scale, multi-party projects.</li>
             </ul>
           </article>
@@ -103,32 +115,27 @@
           <h2>Projects</h2>
           <ul class="cards">
             <li>
-              <h3>Spotify Playlist Generator (JavaScript, APIs, JSON)</h3>
+              <h3>Spotify Playlist Generator</h3>
+              <p><strong>JavaScript · APIs · JSON</strong></p>
               <p>
                 Built an app that integrates third-party APIs to generate personalised playlists based
                 on user preferences.
               </p>
             </li>
             <li>
-              <h3>Engineering Analytics Scripts (Python)</h3>
-              <p>
-                Created scripts for technical calculations, graphing, and data analysis to support
-                engineering problem-solving.
-              </p>
+              <h3>Engineering Analytics Scripts</h3>
+              <p><strong>Python</strong></p>
+              <p>Created scripts for calculations, graphing, and data analysis workflows.</p>
             </li>
             <li>
-              <h3>Hotel Booking System (C)</h3>
-              <p>
-                Developed a text-based booking system covering user input handling, availability logic,
-                and booking records.
-              </p>
+              <h3>Hotel Booking System</h3>
+              <p><strong>C</strong></p>
+              <p>Developed a text-based booking system with input validation and booking logic.</p>
             </li>
             <li>
-              <h3>Object-Oriented Game (Java)</h3>
-              <p>
-                Built a simple game project using object-oriented programming principles and modular
-                code structure.
-              </p>
+              <h3>Object-Oriented Game</h3>
+              <p><strong>Java</strong></p>
+              <p>Built a simple game using OOP principles and modular code design.</p>
             </li>
           </ul>
         </div>
@@ -188,10 +195,7 @@
             <li><a href="mailto:morleyjacob6@gmail.com">morleyjacob6@gmail.com</a></li>
             <li><a href="tel:+447733616898">+44 7733 616898</a></li>
             <li>
-              <a
-                href="https://www.linkedin.com/in/jacob-morley-07291b1a0"
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/in/jacob-morley-07291b1a0" target="_blank" rel="noopener noreferrer"
                 >LinkedIn Profile</a
               >
             </li>
