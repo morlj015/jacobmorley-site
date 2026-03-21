@@ -242,6 +242,7 @@
     const roles = [
       'a web developer.',
       'an AI Automation Engineer.',
+      'a Civil Engineer.',
       'a musician.',
       'a kitesurfer.',
       'a writer.',
