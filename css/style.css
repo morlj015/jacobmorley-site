@@ -1235,25 +1235,65 @@ main {
 }
 
 @media (max-width: 768px) {
+  /* Always show the logo on mobile — morph animation doesn't apply */
+  .nav__logo {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Hide the floating morph title on mobile */
+  .morph-title { display: none !important; }
+
+  /* Keep hero h1 visible since morph JS hides it */
+  .hero__name { opacity: 1 !important; animation: none !important; }
+
+  /* Mobile dropdown menu */
   .nav__links {
     position: fixed;
     top: var(--nav-h); left: 0; right: 0;
-    background: #0d1117;
+    background: rgba(13, 17, 23, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     flex-direction: column;
-    padding: 1.5rem 2rem;
-    gap: 1.25rem;
+    align-items: stretch;
+    padding: 0.5rem 0 1rem;
+    gap: 0;
     transform: translateY(-110%);
-    transition: transform 0.35s ease;
-    box-shadow: var(--shadow-md);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg);
     z-index: 99;
+    pointer-events: none;
   }
-  .nav__links.open { transform: translateY(0); }
-  .nav__toggle { display: flex; }
-  .nav__link { font-size: 1rem; }
+  .nav__links.open {
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  /* Bigger, full-width tap targets */
+  .nav__links li { width: 100%; }
+  .nav__link {
+    display: block;
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+  .nav__links li:last-child .nav__link { border-bottom: none; }
+
+  /* Underline animation off on mobile */
+  .nav__link::after { display: none; }
+
+  /* Larger hamburger tap target */
+  .nav__toggle {
+    display: flex;
+    padding: 10px;
+    margin-right: -10px;
+  }
+  .nav__toggle span { width: 24px; }
 
   .skills__grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-  .projects-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   .books-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
   .footer__inner { flex-direction: column; gap: 1rem; text-align: center; }
 
@@ -1264,6 +1304,7 @@ main {
   .hero__cta { flex-direction: column; }
   .hero__cta .btn { justify-content: center; }
   .skills__grid { grid-template-columns: repeat(3, 1fr); }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* ── Custom Cursors ──────────────────────────────────────── */
