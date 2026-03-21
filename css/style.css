@@ -274,7 +274,20 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
+
+/* Groups theme toggle + hamburger — always visible, no layout shifts */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+/* On desktop the links sit between logo and actions */
+.nav__links { order: 2; }
+.nav__actions { order: 3; }
 
 /* Nav logo: invisible on index (morph element is the visual) */
 .nav__logo {
@@ -1287,8 +1300,7 @@ main {
   /* Larger hamburger tap target */
   .nav__toggle {
     display: flex;
-    padding: 10px;
-    margin-right: -10px;
+    padding: 8px;
   }
   .nav__toggle span { width: 24px; }
 
