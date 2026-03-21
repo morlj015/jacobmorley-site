@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer, Engineer, Writer</title>
-  <meta name="description" content="Jacob Morley is a Digital Analyst &amp; Developer based in the UK, building practical, data driven solutions." />
+  <title>Jacob Morley — Developer, Engineer, Writer</title>
+  <meta name="description" content="Developer, Engineer, Writer based in Bristol, UK." />
+  <meta property="og:title" content="Jacob Morley" />
+  <meta property="og:description" content="Developer, Engineer, Writer" />
+  <meta property="og:type" content="website" />
 
   <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,22 +32,22 @@
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Jacob Morley — Home">Jacob Morley</a>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+          <i class="fa-solid fa-sun" id="themeIcon"></i>
+        </button>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
       <ul class="nav__links" id="navLinks" role="list">
         <li><a href="index.html"     class="nav__link active">Home</a></li>
         <li><a href="projects.html"  class="nav__link">Projects</a></li>
         <li><a href="bookshelf.html" class="nav__link">Bookshelf</a></li>
         <li><a href="#contact"       class="nav__link">Contact</a></li>
-        <li>
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
-            <i class="fa-solid fa-sun" id="themeIcon"></i>
-          </button>
-        </li>
       </ul>
     </div>
   </nav>
