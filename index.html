@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jacob Morley, Digital Analyst &amp; Developer</title>
+  <meta name="description" content="Jacob Morley is a Digital Analyst &amp; Developer based in the UK, building practical, data driven solutions." />
+
+  <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"  id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Morphing title — physically travels from hero to nav on scroll -->
+  <div id="morphTitle" class="morph-title" aria-hidden="true"><span id="morphFirst">Jacob</span><span id="morphLast"> Morley</span></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Jacob Morley — Home">Jacob Morley</a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav__links" id="navLinks" role="list">
+        <li><a href="index.html"     class="nav__link active">Home</a></li>
+        <li><a href="projects.html"  class="nav__link">Projects</a></li>
+        <li><a href="bookshelf.html" class="nav__link">Bookshelf</a></li>
+        <li><a href="#contact"       class="nav__link">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+            <i class="fa-solid fa-sun" id="themeIcon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ── Hero ───────────────────────────────────────────── -->
+    <section class="hero" id="hero" aria-label="Introduction">
+      <div class="container">
+        <div class="hero__content">
+          <span class="hero__eyebrow fade-in">Based in Bristol, UK</span>
+          <h1 class="hero__name" id="heroName">Jacob</h1>
+          <p class="hero__tagline fade-in" aria-label="I am a web developer, AI Automation Engineer, musician, writer, kitesurfer, and company director">
+            I am <span class="hero__typewriter"><span class="hero__typewriter-text" id="typewriterText"></span><span class="hero__cursor" aria-hidden="true"></span></span>
+          </p>
+          <div class="hero__cta fade-in">
+            <a href="projects.html" class="btn btn--primary">
+              View Projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+            <a href="#skills" class="btn btn--ghost">
+              Skills <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__decoration" aria-hidden="true">
+          <div class="hero__grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills ─────────────────────────────────────────── -->
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Capabilities</span>
+          <h2 class="section-title" id="skills-title">Skills</h2>
+        </div>
+
+        <div class="skills__grid" role="list" aria-label="Technical skills">
+
+          <div class="skill-card reveal" role="listitem" aria-label="Python, Advanced" style="--icon-color:#3776ab" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-brands fa-python" style="color:#3776ab"></i>
+            </div>
+            <span class="skill-card__name">Python</span>
+            <span class="skill-card__level">Advanced</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="HTML, Advanced" style="--icon-color:#e34f26" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-brands fa-html5" style="color:#e34f26"></i>
+            </div>
+            <span class="skill-card__name">HTML</span>
+            <span class="skill-card__level">Advanced</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="CSS, Advanced" style="--icon-color:#1572b6" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-brands fa-css3-alt" style="color:#1572b6"></i>
+            </div>
+            <span class="skill-card__name">CSS</span>
+            <span class="skill-card__level">Advanced</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="JavaScript, Intermediate" style="--icon-color:#f7df1e" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-brands fa-js" style="color:#f7df1e"></i>
+            </div>
+            <span class="skill-card__name">JavaScript</span>
+            <span class="skill-card__level">Intermediate</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="Java, Intermediate" style="--icon-color:#007396" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-brands fa-java" style="color:#007396"></i>
+            </div>
+            <span class="skill-card__name">Java</span>
+            <span class="skill-card__level">Intermediate</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="C, Intermediate" style="--icon-color:#a8b9cc" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-c" style="color:#a8b9cc"></i>
+            </div>
+            <span class="skill-card__name">C</span>
+            <span class="skill-card__level">Intermediate</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="OpenCV"
+               style="--icon-color:#5c3ee8" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-eye" style="color:#5c3ee8"></i>
+            </div>
+            <span class="skill-card__name">OpenCV</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="YOLO object detection"
+               style="--icon-color:#e07a3f" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-crosshairs" style="color:#e07a3f"></i>
+            </div>
+            <span class="skill-card__name">YOLO</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="GitHub"
+               style="--icon-color:#333333" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-brands fa-github" style="color:#333333"></i>
+            </div>
+            <span class="skill-card__name">GitHub</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="REST APIs"
+               style="--icon-color:#e07a3f" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-plug" style="color:#e07a3f"></i>
+            </div>
+            <span class="skill-card__name">REST APIs</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="JSON"
+               style="--icon-color:#4a90d9" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-code" style="color:#4a90d9"></i>
+            </div>
+            <span class="skill-card__name">JSON</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="Data Analysis"
+               style="--icon-color:#22c55e" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-chart-bar" style="color:#22c55e"></i>
+            </div>
+            <span class="skill-card__name">Data Analysis</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="Reporting"
+               style="--icon-color:#9b59b6" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-file-lines" style="color:#9b59b6"></i>
+            </div>
+            <span class="skill-card__name">Reporting</span>
+          </div>
+
+          <div class="skill-card reveal" role="listitem" aria-label="Trend Analysis"
+               style="--icon-color:#e74c3c" tabindex="0">
+            <div class="skill-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-chart-line" style="color:#e74c3c"></i>
+            </div>
+            <span class="skill-card__name">Trend Analysis</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About ──────────────────────────────────────────── -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__text reveal">
+            <span class="section-label">About</span>
+            <h2 class="section-title" id="about-title">A bit about me</h2>
+            <p class="about__lead">
+              I combine technical skills with business thinking, building tools, analysing data, and delivering real world solutions.
+            </p>
+            <p class="about__body">
+              From writing Python scripts that automate complex analysis to building full applications in JavaScript, Java, and C. I enjoy the challenge of turning data and logic into something genuinely useful. I'm passionate about bridging the gap between raw data and real decisions.
+            </p>
+            <a href="projects.html" class="btn btn--primary">
+              See my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="about__visual reveal" aria-hidden="true">
+            <div class="about__card">
+              <div class="about__card-header">
+                <span class="about__card-dot"></span>
+                <span class="about__card-dot"></span>
+                <span class="about__card-dot"></span>
+              </div>
+              <div class="about__card-body">
+                <div class="about__card-line">
+                  <span class="about__card-label">role</span>
+                  <span class="about__card-value">AI Automation Engineer</span>
+                </div>
+                <div class="about__card-line">
+                  <span class="about__card-label">location</span>
+                  <span class="about__card-value">United Kingdom</span>
+                </div>
+                <div class="about__card-line">
+                  <span class="about__card-label">status</span>
+                  <span class="about__card-value status-dot">Available for opportunities</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ────────────────────────────────────────── -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Let's talk</span>
+          <h2 class="section-title" id="contact-title">Get in Touch</h2>
+          <p class="section-subtitle">
+            Have a project in mind, or just want to say hello? I'd love to hear from you.
+          </p>
+        </div>
+
+        <div class="contact__inner">
+          <!-- Form -->
+          <form class="contact__form reveal" id="contactForm" novalidate aria-label="Contact form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">
+              <span>Send Message</span>
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </button>
+            <p class="contact__fallback">
+              Or email directly:
+              <a href="mailto:morleyjacob6@gmail.com">morleyjacob6@gmail.com</a>
+            </p>
+          </form>
+
+          <!-- Info sidebar -->
+          <div class="contact__info reveal">
+            <div class="contact__info-card">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:morleyjacob6@gmail.com">morleyjacob6@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact__info-card">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              <div>
+                <strong>LinkedIn</strong>
+                <a href="https://www.linkedin.com/in/jacob-morley-07291b1a0/"
+                   target="_blank" rel="noopener noreferrer">
+                  Connect with me
+                </a>
+              </div>
+            </div>
+
+            <!-- Terminal LinkedIn Easter Egg -->
+            <div class="contact__terminal">
+              <div class="terminal" role="presentation">
+                <div class="terminal__header" aria-hidden="true">
+                  <span class="terminal__dot"></span>
+                  <span class="terminal__dot"></span>
+                  <span class="terminal__dot"></span>
+                </div>
+                <div class="terminal__body">
+                  <p class="terminal__line">
+                    <span class="terminal__prompt" aria-hidden="true">$</span>
+                    <span class="terminal__cmd" id="terminalText"></span>
+                    <span class="terminal__cursor" aria-hidden="true">▋</span>
+                  </p>
+                  <p class="terminal__output" id="terminalOutput" style="opacity:0; transition: opacity 0.4s;">
+                    <a href="https://www.linkedin.com/in/jacob-morley-07291b1a0/"
+                       target="_blank" rel="noopener noreferrer">
+                      → Opening profile: Jacob Morley
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">© 2025 Jacob Morley — Built with HTML, CSS &amp; JS</p>
+        <div class="footer__links">
+          <a href="https://www.linkedin.com/in/jacob-morley-07291b1a0/"
+             target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:morleyjacob6@gmail.com" aria-label="Send email">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cursor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

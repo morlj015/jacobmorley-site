@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookshelf, Jacob Morley</title>
+  <meta name="description" content="Books Jacob Morley has read — a curated digital bookshelf synced from Goodreads." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .shelf-intro {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-top: 0.75rem;
+      max-width: 55ch;
+    }
+
+    .shelf-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .shelf-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.875rem;
+    }
+    .shelf-stat i { color: var(--accent); }
+
+    .shelf-gr-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      border-radius: 100px;
+      padding: 0.3rem 0.875rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .shelf-gr-link:hover {
+      background: rgba(224,122,63,0.15);
+      color: var(--accent);
+    }
+
+    .shelf-filter {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .shelf-filter__btn {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+    .shelf-filter__btn:hover,
+    .shelf-filter__btn.active {
+      background: rgba(224,122,63,0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Book card as anchor */
+    a.book-card {
+      text-decoration: none;
+      color: inherit;
+    }
+    a.book-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Loading skeleton */
+    .shelf-loading {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+    }
+    .shelf-loading__spinner {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* States */
+    .shelf-error,
+    .shelf-empty {
+      grid-column: 1 / -1;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+    }
+    .shelf-error a,
+    .shelf-empty a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* Light theme overrides for inline shelf styles */
+    html[data-theme="light"] .shelf-filter__btn {
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    html[data-theme="light"] .shelf-filter__btn:hover,
+    html[data-theme="light"] .shelf-filter__btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+    html[data-theme="light"] .shelf-gr-link:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    /* Unrated badge */
+    .book-card__stars .no-rating {
+      font-size: 0.7rem;
+      font-style: italic;
+      color: var(--border);
+      letter-spacing: 0;
+    }
+  </style>
+  <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Jacob Morley — Home">Jacob Morley</a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav__links" id="navLinks" role="list">
+        <li><a href="index.html"      class="nav__link">Home</a></li>
+        <li><a href="projects.html"   class="nav__link">Projects</a></li>
+        <li><a href="bookshelf.html"  class="nav__link active">Bookshelf</a></li>
+        <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+            <i class="fa-solid fa-sun" id="themeIcon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="shelf-title">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-label">Reading list</span>
+          <h1 class="section-title" id="shelf-title">Bookshelf</h1>
+          <p class="shelf-intro">Books I've read, enjoyed, and learned from — spanning tech, thinking, fiction, and beyond.</p>
+          <div class="shelf-meta">
+            <span class="shelf-stat" id="shelf-count">
+              <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+              Loading…
+            </span>
+            <a class="shelf-gr-link"
+               href="https://www.goodreads.com/user/show/131682472-jacob-morley"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="View my Goodreads profile">
+              <i class="fa-brands fa-goodreads-g" aria-hidden="true"></i>
+              Goodreads
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bookshelf -->
+    <section class="bookshelf-section" aria-label="Books read">
+      <div class="container">
+
+        <!-- Filters -->
+        <div class="shelf-filter" role="group" aria-label="Filter by rating">
+          <button class="shelf-filter__btn active" data-filter="all">All</button>
+          <button class="shelf-filter__btn" data-filter="5">★★★★★</button>
+          <button class="shelf-filter__btn" data-filter="4">★★★★</button>
+          <button class="shelf-filter__btn" data-filter="3">★★★</button>
+        </div>
+
+        <!-- Dynamic grid (populated by bookshelf.js) -->
+        <div class="shelf-row">
+          <div class="books-grid" id="books-grid">
+            <div class="shelf-loading">
+              <div class="shelf-loading__spinner" aria-hidden="true"></div>
+              Fetching books from Goodreads…
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">© 2025 Jacob Morley. Built with care.</p>
+        <div class="footer__links">
+          <a href="https://www.linkedin.com/in/jacob-morley-07291b1a0/"
+             target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:morleyjacob6@gmail.com" aria-label="Email">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cursor.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/bookshelf.js"></script>
+</body>
+</html>
